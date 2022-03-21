@@ -1,20 +1,44 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator  } from '@react-navigation/stack';
+
+import Dashboard from './src/Dashboard';
+import ViewCard from './src/ViewCard';
+
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen 
+          name="Dashboard" 
+          component={Dashboard}
+          options={{
+            title: 'All Notes',
+            headerStyle: {
+              backgroundColor: '#1a1c1b',
+            },
+            headerTintColor: '#FAFAFA',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+          }}
+        />
+        <Stack.Screen 
+          name="ViewCard" 
+          component={ViewCard} 
+          options={{
+            title: 'Your Note',
+            headerStyle: {
+              backgroundColor: '#1a1c1b',
+            },
+            headerTintColor: '#FAFAFA',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+          }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
